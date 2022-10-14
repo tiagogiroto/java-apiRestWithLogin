@@ -9,6 +9,7 @@ public class userRepository {
     
     List<user> user;
 
+    // exibe tudo inserido dentro dos setters  de usuarios
     public List<user> getUsers(){
 
         List<user> users = new ArrayList<>();

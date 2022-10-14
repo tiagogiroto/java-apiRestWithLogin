@@ -14,6 +14,7 @@ public class userService {
     
     userRepository usuario = new userRepository();
 
+    // faz a request para a pagina de busca de users
     @RequestMapping
     @GetMapping(value="/userAll")
     public List<user> exibirUsuarios(){
