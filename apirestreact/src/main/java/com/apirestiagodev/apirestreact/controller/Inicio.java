@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RestController;
 public class Inicio {
   
     @GetMapping(value="/", produces = "application/json")
-
     public String teste() {
         return "ola, mundo";
     }
