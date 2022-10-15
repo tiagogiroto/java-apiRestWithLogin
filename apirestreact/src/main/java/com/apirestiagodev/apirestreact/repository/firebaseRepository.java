@@ -1,20 +1,18 @@
 package com.apirestiagodev.apirestreact.repository;
+
+import org.springframework.stereotype.Service;
+
+import com.google.api.client.util.IOUtils;
 import com.google.auth.oauth2.GoogleCredentials;
+import com.google.auth.oauth2.ServiceAccountCredentials;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.FirebaseOptions;
-import org.springframework.stereotype.Service;
+
+import java.io.InputStream;
+import java.io.StringWriter;
 
 import javax.annotation.PostConstruct;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.PrintWriter;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 
 @Service
 public class firebaseRepository {
@@ -23,38 +21,46 @@ public class firebaseRepository {
     @PostConstruct
     public void initialize() {
        
-        Path path 
-        = Paths.get( "..\\addons\\key.json"); 
+        
+        // InputStream inputStream = getClass().getResourceAsStream("../addons/key.json");
+        
+        // BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream)); 
 
-        boolean isresult2 = Files.isReadable(path);
-        boolean result = Files.exists(path); 
-
-      
+        // String contents = reader.lines().collect(Collectors.joining(System.lineSeparator()));
         
 
-        System.out.println("File " + path 
-                           + " is Executable = "
-                           + result ); 
+
+        
+        
         try {
+            
+            InputStream inputStream = getClass().getResourceAsStream("../addons/key.json");
+    
+            StringWriter writer = new StringWriter();
+            // IOUtils.copy(inputStream,  writer);
+            System.out.println(writer.toString());
+            ServiceAccountCredentials serviceAccountCredentials = ServiceAccountCredentials.fromStream(inputStream);
+            // System.out.println(serviceAccountCredentials);
+            // FileInputStream serviceAccount = new FileInputStream(contents);
+            FirebaseOptions options = new FirebaseOptions.Builder().setCredentials(serviceAccountCredentials).build();
 
-            // File fileObj = new File("aaa.txt");  
-            // PrintWriter printWriter1 = new PrintWriter(new FileWriter(fileObj), true);  
-            // printWriter1.println("Hello world");  
-            // printWriter1.close();  
+            FirebaseApp.initializeApp(options);
 
-            // FileInputStream serviceAccount =
-            //         new FileInputStream(filename);
 
-                    
+        } catch (Exception e) {
+            System.out.println(e);
+            // TODO: handle exception
+        }
+
+
+            // FileInputStream serviceAccount = new FileInputStream(filename);
 
             // FirebaseOptions options = new FirebaseOptions.Builder()
             //         .setCredentials(GoogleCredentials.fromStream(serviceAccount))
             //         .build();
 
             // FirebaseApp.initializeApp(options);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        
 
     }
 

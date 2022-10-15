@@ -35,18 +35,21 @@ public class userRepository {
         return users;
     }
 
-    public user getUserRepository(String name) throws InterruptedException, ExecutionException {
+    public user getUserRepository() throws InterruptedException, ExecutionException {
 
         Firestore dbFirestore = FirestoreClient.getFirestore();
-        DocumentReference documentReference = dbFirestore.collection("users").document("name");
+        DocumentReference documentReference = 
+            dbFirestore.collection("users").document("Fm0zFozrDpBHxWnPsbQl");
         ApiFuture<DocumentSnapshot> future = documentReference.get();
 
         DocumentSnapshot document = future.get();
+        System.out.println(document.getData());
 
         user USER = null;
 
         if(document.exists()) {
             USER = document.toObject(user.class);
+
             return USER;
         }else {
             return null;

@@ -3,7 +3,6 @@ package com.apirestiagodev.apirestreact.controller;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -23,9 +22,9 @@ public class userController {
     }
     
     @GetMapping(value = "/getUser", produces="application/json") 
-    public user getUser(@RequestParam String name ) throws InterruptedException, ExecutionException{
+    public user getUser() throws InterruptedException, ExecutionException{
 
-        return usuario.getUserRepository(name);
+        return usuario.getUserRepository();
     }
 
 }
