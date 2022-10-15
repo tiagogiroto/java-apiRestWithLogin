@@ -21,29 +21,14 @@ public class firebaseRepository {
     @PostConstruct
     public void initialize() {
        
-        
-        // InputStream inputStream = getClass().getResourceAsStream("../addons/key.json");
-        
-        // BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream)); 
-
-        // String contents = reader.lines().collect(Collectors.joining(System.lineSeparator()));
-        
-
-
-        
-        
         try {
             
             InputStream inputStream = getClass().getResourceAsStream("../addons/key.json");
-    
             StringWriter writer = new StringWriter();
-            // IOUtils.copy(inputStream,  writer);
             System.out.println(writer.toString());
             ServiceAccountCredentials serviceAccountCredentials = ServiceAccountCredentials.fromStream(inputStream);
-            // System.out.println(serviceAccountCredentials);
-            // FileInputStream serviceAccount = new FileInputStream(contents);
+      
             FirebaseOptions options = new FirebaseOptions.Builder().setCredentials(serviceAccountCredentials).build();
-
             FirebaseApp.initializeApp(options);
 
 
@@ -52,31 +37,8 @@ public class firebaseRepository {
             // TODO: handle exception
         }
 
-
-            // FileInputStream serviceAccount = new FileInputStream(filename);
-
-            // FirebaseOptions options = new FirebaseOptions.Builder()
-            //         .setCredentials(GoogleCredentials.fromStream(serviceAccount))
-            //         .build();
-
-            // FirebaseApp.initializeApp(options);
         
 
     }
 
 }
-
-// final String[] serviceAccount  = 
-//                 {
-//                     "type : service_account",
-//                     "project_id: gym-react-cd899",
-//                     "private_key_id: -----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDzhOft8pQ9/Gw/\ncP6b0SiiF9v0JM/OJnfq82WYyS8VpGZzBOLZd63CxDlPfsempdTIQU+RfqK+2alW\nQBGphTlq5y8ppA81nLlVnkm5pHoU3ebJZipiCePh5eOhsNFGhjwMfgNUBErkUq1r\n+UMCd3xdYJV+9sJwx2Olk1sMQdeo/xWo51ik9ciV5a0H8aqe2KZ7SQZzpXCwNzPB\n3bLjK/elPa21TxW/OosEeOemSd9SfYQffeQdS80Eb4Juk9PlVzVZZs5mSnXYh7t2\nGOTmSttziW3Erna4LVakTo3hByO6RNxKayNuGPWTYPgP0RaWeH6i4AjuuD2hqPMu\nx4uWKGavAgMBAAECggEAJE9w9b3x9Lwqt9r1W+54DJNaLLFAexCpWNMqFvoIl0WI\nMSZNXPfHZP81PHE++85GSAXVA3DKe4KhCUdMWuaOhS4rjh30Vp4j1GxhudiYi3v6\n6ZTeRPgMjqZkprtiuQ1S7tnrTR/GuvzI9wyXvUprtNCt+dx5aa+RYCL0tIMs0PnN\nnOhV6kF1ThF4uRLQgRF5FgdXyqkxENlfrIdBtYCTmqVnyDnBCEjl5Pt34mR4YxEb\nD8czZsrUsNkzPZySsdmZa8o9g6j+QS6YUCo0Ub9DUuMAQLfYbR1DB6Pd8uwANfwc\nYGJnBL9+euYrVuBXtGqqRy7rTga1BE2HOlsLeL+7YQKBgQD9uEKbyogRSUBIABNR\ndEpYD+9J4CKUyB4jBIVKnt+Kk5tJmRLMNmg5rLefaX/FaiwX549vxFrrAXw3lWMH\nT9xEzBzq18w9W+wcsqWOuWEJg+9ZZjDvFzJDK75Dz60uyM8Q218J3M+YFHMIU5NN\n/5ct8DYjClBHpBaiXx8qCc+qhQKBgQD1tS1PEjFec1hoAMFHxjiIRqm/dTOKbpVU\n6FZAvctL+dIcfx3CuN6FX67r3pMebPErpSrVpPWcpkRlmcxMXP28VJtGoyz1eC86\nnhRiirXr3gqKeVBV7wEmagbeeyMsvmtb0gAQk/H9wrYGcnpjjX3ni8FpEEKTg71l\ndSpFky3EowKBgEld6ezw4O3Wt77aPrvUG9dhLDm5lWZeg9BuczjDvjJtQn9Cw1vH\n89WRqztun2Lvs7Zp4GFab0v7jvbnvM4VesVuHIKQSmAH37vgsN0XoAbHXwQD9+x7\nUa54zLkBKbwYlz/xn4bTkjgQ2b6zpCnu2cGP76esSNCek2j6hqF6WtGdAoGAA2hw\n6XDaKHI3HrIr/B/ett0sC5DHlzrzbUsPrzQytqoPZP/KXOINjBIIrhLXPYvLSIyw\n7GeuVG7l8fbRI5oClvMheDhZLkptdUWuCLPd1BivUr5eA+Mdw/eigsF4em1ltc9S\n2ugCaj+iILLDyc+zmFuS4i8sjTk9jkOyw2ZIMzsCgYEAqn1jRnAtrCrHL4V3NVKC\n6R52Dm0MkHUFMN8z8E1j6j8DgjnRBlv4NngRjy2f2dpuloNX6yamKV7JB/Cas5Gv\nLJAWD1nIVJeJcFeQkRhOYdsIlz94Q2kcxDICyy8lXU+Z3Fk9ykTtoMcaeKUoqHOG\nmnLqKfTTh+LS3kGOSUI3ZnA=\n-----END PRIVATE KEY-----\n",
-//                     "client_email: firebase-adminsdk-xj6ti@gym-react-cd899.iam.gserviceaccount.com",
-//                     "client_id: 105315606942203493948",
-//                     "auth_uri: https://accounts.google.com/o/oauth2/auth",
-//                     "token_uri: https://oauth2.googleapis.com/token",
-//                     "auth_provider_x509_cert_url: https://www.googleapis.com/oauth2/v1/certs",
-//                     "client_x509_cert_url: https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-xj6ti%40gym-react-cd899.iam.gserviceaccount.com"
-
-//                 };
-            
