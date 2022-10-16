@@ -27,4 +27,11 @@ public class userController {
         return usuario.getUserRepository();
     }
 
+    @GetMapping(value = "/allUsers", produces = "application/json")
+    public Object getAllUsers() throws InterruptedException, ExecutionException{
+
+        return usuario.allUsers();
+
+    }
+
 }

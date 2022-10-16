@@ -16,13 +16,9 @@ import javax.annotation.PostConstruct;
 
 @Service
 public class firebaseRepository {
-    // Path path = Paths.get("..//addons//key.json");
-
     @PostConstruct
     public void initialize() {
-       
         try {
-            
             InputStream inputStream = getClass().getResourceAsStream("../addons/key.json");
             StringWriter writer = new StringWriter();
             System.out.println(writer.toString());
@@ -34,11 +30,7 @@ public class firebaseRepository {
 
         } catch (Exception e) {
             System.out.println(e);
-            // TODO: handle exception
         }
-
-        
-
     }
 
 }
