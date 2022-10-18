@@ -12,9 +12,5 @@ public class Inicio {
     public String teste() {
         return "ola, mundo";
     }
-    
-
-
-
 }
 
