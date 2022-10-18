@@ -6,11 +6,9 @@ import java.util.concurrent.ExecutionException;
 
 import com.apirestiagodev.apirestreact.classFolder.user;
 import com.google.api.core.ApiFuture;
-import com.google.cloud.firestore.CollectionReference;
 import com.google.cloud.firestore.DocumentReference;
 import com.google.cloud.firestore.DocumentSnapshot;
 import com.google.cloud.firestore.Firestore;
-import com.google.cloud.firestore.Query;
 import com.google.cloud.firestore.QueryDocumentSnapshot;
 import com.google.cloud.firestore.QuerySnapshot;
 import com.google.firebase.cloud.FirestoreClient;
@@ -70,15 +68,26 @@ public class userRepository {
         {@allUsers} 
         {buscar toda a lista de usuarios} 
     */  
-    public user allUsers() throws InterruptedException, ExecutionException {
+    public List allUsers() throws InterruptedException, ExecutionException {
+
+        List allUsers = new ArrayList<>();
 
         Firestore dbFirestore = FirestoreClient.getFirestore();
 
+        // asynchronously retrieve all documents
+        ApiFuture<QuerySnapshot> future = dbFirestore.collection("users").get();
         
+        List<QueryDocumentSnapshot> documents = future.get().getDocuments();
 
+
+        for (QueryDocumentSnapshot document : documents) {
+            System.out.println(document.toObject(user.class));
+
+            allUsers.add(document.toObject(user.class));
+          }
     //    System.out.println(document);
        
-        return null;
+        return allUsers;
         // System.out.println(docData.getData());
     }
 }

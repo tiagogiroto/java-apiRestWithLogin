@@ -21,6 +21,6 @@ public class user {
 
 
     public String toString(){
-        return "Usuario = "+ name + trainningType ;
+        return "Usuario = "+ name + ", Tipo de treino =" + trainningType ;
     }
 }
