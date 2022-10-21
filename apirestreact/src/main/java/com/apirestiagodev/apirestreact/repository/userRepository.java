@@ -1,7 +1,9 @@
 package com.apirestiagodev.apirestreact.repository;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.ExecutionException;
 
 import com.apirestiagodev.apirestreact.classFolder.user;
@@ -11,6 +13,7 @@ import com.google.cloud.firestore.DocumentSnapshot;
 import com.google.cloud.firestore.Firestore;
 import com.google.cloud.firestore.QueryDocumentSnapshot;
 import com.google.cloud.firestore.QuerySnapshot;
+import com.google.cloud.firestore.WriteResult;
 import com.google.firebase.cloud.FirestoreClient;
 
 public class userRepository {
@@ -73,21 +76,35 @@ public class userRepository {
         List allUsers = new ArrayList<>();
 
         Firestore dbFirestore = FirestoreClient.getFirestore();
-
-        // asynchronously retrieve all documents
         ApiFuture<QuerySnapshot> future = dbFirestore.collection("users").get();
         
         List<QueryDocumentSnapshot> documents = future.get().getDocuments();
 
 
         for (QueryDocumentSnapshot document : documents) {
-            System.out.println(document.toObject(user.class));
-
             allUsers.add(document.toObject(user.class));
           }
-    //    System.out.println(document);
-       
+
         return allUsers;
-        // System.out.println(docData.getData());
+
+    }
+
+    public Object addUser() throws InterruptedException, ExecutionException{
+            Map<String, Object> docData = new HashMap<>();
+
+        try {
+
+            docData.put("name", "jorge");
+            docData.put("trainningType", "aaaaaaaaaa");
+    
+            Firestore dbFirestore = FirestoreClient.getFirestore();
+            ApiFuture<WriteResult> future = dbFirestore.collection("users").document().set(docData);
+    
+            System.out.println("Update time : " + future.get().getUpdateTime());
+            
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+       return docData;
     }
 }

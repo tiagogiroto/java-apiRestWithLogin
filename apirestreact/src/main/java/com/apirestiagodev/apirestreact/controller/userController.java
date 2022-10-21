@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.concurrent.ExecutionException;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.apirestiagodev.apirestreact.classFolder.user;
@@ -31,6 +32,11 @@ public class userController {
 
         return usuario.allUsers();
 
+    }
+
+    @PostMapping(value = "/addUser", produces = "application/json")
+    public Object addUser() throws InterruptedException, ExecutionException{
+        return usuario.addUser();
     }
 
 }
