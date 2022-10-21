@@ -89,13 +89,14 @@ public class userRepository {
 
     }
 
-    public Object addUser() throws InterruptedException, ExecutionException{
+    public Object addUser(String name, String trainningType) throws InterruptedException, ExecutionException{
             Map<String, Object> docData = new HashMap<>();
 
+            System.out.println(name + " " + trainningType );
         try {
 
-            docData.put("name", "jorge");
-            docData.put("trainningType", "aaaaaaaaaa");
+            docData.put("name", name);
+            docData.put("trainningType", trainningType);
     
             Firestore dbFirestore = FirestoreClient.getFirestore();
             ApiFuture<WriteResult> future = dbFirestore.collection("users").document().set(docData);

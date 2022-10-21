@@ -35,8 +35,9 @@ public class userController {
     }
 
     @PostMapping(value = "/addUser", produces = "application/json")
-    public Object addUser() throws InterruptedException, ExecutionException{
-        return usuario.addUser();
+    public Object addUser(String name, String trainningType) throws InterruptedException, ExecutionException{
+        
+        return usuario.addUser(name, trainningType);
     }
 
 }
