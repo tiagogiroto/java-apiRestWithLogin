@@ -26,8 +26,7 @@ public class userRepository {
     public user getUserRepository(String id) throws InterruptedException, ExecutionException {
 
         Firestore dbFirestore = FirestoreClient.getFirestore();
-        DocumentReference documentReference = 
-            dbFirestore.collection("users").document(id); // only 1 document
+        DocumentReference documentReference = dbFirestore.collection("users").document(id); // only 1 document
 
         ApiFuture<DocumentSnapshot> future = documentReference.get();
 
