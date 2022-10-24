@@ -89,6 +89,10 @@ public class userRepository {
 
     }
 
+    /** 
+        {@addUser} 
+        {Adiciona um novo usuario com id de documento aleatorio} 
+    */  
     public Object addUser(String name, String trainningType) throws InterruptedException, ExecutionException{
             Map<String, Object> docData = new HashMap<>();
 

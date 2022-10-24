@@ -40,4 +40,10 @@ public class userController {
         return usuario.addUser(name, trainningType);
     }
 
+    // criar metodo de alterar dados
+
+    // criar metodo de exclusao
+
+    
+
 }
