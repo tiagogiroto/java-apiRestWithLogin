@@ -17,9 +17,9 @@ public class userController {
     userRepository usuario = new userRepository();
 
     @GetMapping(value = "/getUser", produces="application/json") 
-    public user getUser() throws InterruptedException, ExecutionException{
+    public user getUser(String id) throws InterruptedException, ExecutionException{
 
-        return usuario.getUserRepository();
+        return usuario.getUserRepository(id);
     }
 
     @GetMapping(value = "/allUsers", produces = "application/json")
