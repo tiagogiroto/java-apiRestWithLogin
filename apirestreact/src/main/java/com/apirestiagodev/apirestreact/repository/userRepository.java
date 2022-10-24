@@ -19,27 +19,6 @@ import com.google.firebase.cloud.FirestoreClient;
 public class userRepository {
     
     List<user> user;
-
-    // exibe tudo inserido dentro dos setters  de usuarios
-    public List<user> getUsers(){
-
-        List<user> users = new ArrayList<>();
-
-        try {
-            user usuario = new user();
-            usuario.setName("tiago");
-            usuario.setTrainningType("dsaedasdasda");
-
-            users.add(usuario);
-
-
-        } catch (Exception e) {
-            System.out.println(e);
-        }
-
-        return users;
-    }
-
     /** 
         {@getUserRepository} 
         {Busca um  usuario por seu id} 
