@@ -3,8 +3,10 @@ package com.apirestiagodev.apirestreact.controller;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.apirestiagodev.apirestreact.classFolder.user;
@@ -40,9 +42,17 @@ public class userController {
         return usuario.addUser(name, trainningType);
     }
 
-    // criar metodo de alterar dados
+    @PutMapping(value = "/alterUser", produces = "application/json")
+    public user alterUser()throws InterruptedException, ExecutionException{
+        return usuario.alterUser();
+    }
 
     // criar metodo de exclusao
+    @DeleteMapping(value = "/deleteUser", produces="application/json")
+    public String deleteUser(String id) throws InterruptedException, ExecutionException{
+
+        return usuario.deleteUser(id);
+    }
 
     
 

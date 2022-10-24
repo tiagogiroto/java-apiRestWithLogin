@@ -66,7 +66,6 @@ public class userRepository {
 
     }
 
-
     /** 
         {@allUsers} 
         {buscar toda a lista de usuarios} 
@@ -112,4 +111,53 @@ public class userRepository {
         }
        return docData;
     }
+
+    /** 
+        {@AlterUser} 
+        {Altera os dados do usuariro com base no id da coleção referenciando o ponto especifico} 
+    */  
+    public user alterUser() throws InterruptedException, ExecutionException{
+
+        Firestore dbFirestore = FirestoreClient.getFirestore();
+
+        // referencia o documento pelo nome da coleção
+        // coloca a forma de identificacao
+        // altera pelo docref.upate, (nomeItem, alteraçãoNecessaria)
+            
+        DocumentReference docRef = dbFirestore.collection("users").document("XhHcTiMNzI9IXevylrPC");
+
+        // (async) Update one field
+        ApiFuture<WriteResult> future = docRef.update("trainningType", "teste alaateracao");
+
+        // ...
+        WriteResult result = future.get();
+        System.out.println("Write result: " + result);    
+
+        return null;
+    }
+
+    /** 
+        {@deleteUser} 
+        {deleta o usuario pelo id da coleção} 
+    */  
+    public String deleteUser(String id)throws InterruptedException, ExecutionException {
+
+        try {
+
+            Firestore dbFirestore = FirestoreClient.getFirestore();
+
+            ApiFuture<WriteResult> writeResult = dbFirestore.collection("users").document(id).delete(); 
+            // ...
+            System.out.println("Update time : " + writeResult.get().getUpdateTime());
+
+            return "Dados excluidos de users , com id = " + id;
+
+        } catch (Exception e) {
+            System.out.println(e);
+            // TODO: handle exception
+        }
+        return null;
+        
+    }
+
 }
