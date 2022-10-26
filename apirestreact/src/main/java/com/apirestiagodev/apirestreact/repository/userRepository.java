@@ -1,17 +1,12 @@
 package com.apirestiagodev.apirestreact.repository;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
+
 import java.util.concurrent.ExecutionException;
 
 import com.apirestiagodev.apirestreact.classFolder.user;
 import com.apirestiagodev.apirestreact.service.userService;
-import com.google.api.core.ApiFuture;
-import com.google.cloud.firestore.DocumentReference;
-import com.google.cloud.firestore.Firestore;
-import com.google.cloud.firestore.WriteResult;
-import com.google.firebase.cloud.FirestoreClient;
+
 
 public class userRepository {
     

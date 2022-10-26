@@ -116,7 +116,6 @@ public class userService {
 
         } catch (Exception e) {
             System.out.println(e);
-            // TODO: handle exception
         }
         return null;
     }
