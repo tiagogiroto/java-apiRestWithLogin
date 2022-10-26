@@ -39,7 +39,6 @@ public class userController {
         return usuario.alterUser();
     }
 
-    // criar metodo de exclusao
     @DeleteMapping(value = "/deleteUser", produces="application/json")
     public String deleteUser(String id) throws InterruptedException, ExecutionException{
 
