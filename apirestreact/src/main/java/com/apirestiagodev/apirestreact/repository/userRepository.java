@@ -39,7 +39,7 @@ public class userRepository {
 
     /** 
         {@AlterUser} 
-        {Altera os dados do usuariro com base no id da coleção referenciando o ponto especifico} 
+        {Altera os dados do usuariro com base no id da coleção referenciando o ponto especifico #editar} 
     */  
     public user alterUser() throws InterruptedException, ExecutionException{
 
